@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const location = document.querySelector('#location')
         const isp = document.querySelector('#isp')
         const timezone = document.querySelector('#timezone')
-        const endpoint = `http://ip-api.com/json/${ip}`
+        const endpoint = `https://ip-api.com/json/${ip}`
 
         window.fetch(endpoint)
         .then(function (resposta) {
