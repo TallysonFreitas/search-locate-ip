@@ -1,0 +1,127 @@
+@use'variaveis';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+    position: relative;
+    height: 97vh;
+    
+}
+
+.top{
+    background-image: url(../../images/pattern-bg-desktop.png);
+    height: 280px;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 32px;
+
+    &--title{
+        color: white;
+    }
+    &__form{
+        display: flex;
+        justify-content: center;
+
+        &--input{
+            padding: 16px;
+            width: 500px;
+            border-radius: 8px 0px 0px 8px;
+            border: none;
+            font-weight: 400;
+            font-size: 18px;
+            outline: none;
+
+            
+
+            @media (max-width:768px){
+                width: 100%;
+                font-size: 10px;
+            }
+        }
+        &--button{
+            padding: 12px 24px;
+            background-color: variaveis.$VeryGray;
+            color: white;
+            font-weight: bold;
+            border-radius: 0px 8px 8px 0px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+
+            @media (max-width:768px){
+                width: 10%;
+            }
+        }
+    }
+}
+
+.resposta{
+    z-index: 1000000;
+    width: 80%;
+    min-height: 120px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 16px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 220px;
+
+    @media (max-width:768px){
+        display: block;
+        height: auto;
+        padding: 20px;
+        width: 60%;
+        min-width: 360px;
+    }
+
+    &__item{
+        padding-left: 20px;
+        margin:20px 20px 20px 0px;
+        border-left: 1px solid variaveis.$DarkGray;
+        width: 100%;
+        overflow-y: inherit;
+
+        @media (max-width:768px){
+            border: none;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+
+        &--text{
+            color:variaveis.$DarkGray;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        &--title{
+            font-size: 20px;
+            font-weight: 500;
+
+            @media (max-width:1280px){
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.border-none{
+    border: none;
+}
+
+#map { height: 73.1%; }
