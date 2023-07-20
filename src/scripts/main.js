@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const location = document.querySelector('#location')
         const isp = document.querySelector('#isp')
         const timezone = document.querySelector('#timezone')
-        const endpoint = `http://ip-api.com/json/${ip}`
+        const endpoint = `
+        https://geo.ipify.org/api/v2/country?apiKey=at_CPuFhcgLiUtZagbhITjhagHAW31ka&ipAddress=${ip}`
 
         window.fetch(endpoint)
         .then(function (resposta) {
@@ -26,26 +27,24 @@ document.addEventListener('DOMContentLoaded', function () {
             const latitude = json['lat']
             const longitude = json['lon']
 
-            if(json['status'] == 'success'){
-                var map = L.map('map').setView([latitude, longitude], 13);
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-                
-                var greenIcon = L.icon({
-                    iconUrl: '../../images/icon-location.svg',
-                    shadowUrl: '',
-                
-                    iconSize:     [45, 95], // size of the icon
-                    shadowSize:   [50, 64], // size of the shadow
-                    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                    shadowAnchor: [4, 62],  // the same for the shadow
-                    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-                });
-                L.marker([latitude, longitude], {icon: greenIcon}).addTo(map);
-                console.log(map)
-            }
+            var map = L.map('map').setView([latitude, longitude], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            
+            var greenIcon = L.icon({
+                iconUrl: '../../images/icon-location.svg',
+                shadowUrl: '',
+            
+                iconSize:     [45, 95], // size of the icon
+                shadowSize:   [50, 64], // size of the shadow
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                shadowAnchor: [4, 62],  // the same for the shadow
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            L.marker([latitude, longitude], {icon: greenIcon}).addTo(map);
+            console.log(map)
         })
         
 
