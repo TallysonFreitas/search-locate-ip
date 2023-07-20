@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const location = document.querySelector('#location')
         const isp = document.querySelector('#isp')
         const timezone = document.querySelector('#timezone')
-        const endpoint = `
-        https://geo.ipify.org/api/v2/country?apiKey=at_CPuFhcgLiUtZagbhITjhagHAW31ka&ipAddress=${ip}`
+        const endpoint = `https://geo.ipify.org/api/v2/country?apiKey=at_CPuFhcgLiUtZagbhITjhagHAW31ka&ipAddress=${ip}`
 
         window.fetch(endpoint)
         .then(function (resposta) {
@@ -20,12 +19,12 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(function (json) {
             
             console.log(json)
-            isp.innerHTML = json['as']
-            timezone.innerHTML = json['timezone']
-            location.innerHTML = json['country'] + ', ' + json['regionName']
-            address.innerHTML = json['query']
-            const latitude = json['lat']
-            const longitude = json['lon']
+            isp.innerHTML = json['isp']
+            timezone.innerHTML = json['location'].timezone
+            location.innerHTML = json['location'].country + ', ' + json['location'].region
+            address.innerHTML = json['ip']
+            const latitude = 34.0648
+            const longitude = -118.086
 
             var map = L.map('map').setView([latitude, longitude], 13);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -46,14 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
             L.marker([latitude, longitude], {icon: greenIcon}).addTo(map);
             console.log(map)
         })
-        
-
-        
-
-            
-            
-            
     })
-    
 })
 
